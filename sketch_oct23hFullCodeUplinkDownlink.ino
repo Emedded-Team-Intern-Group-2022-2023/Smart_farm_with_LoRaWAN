@@ -5,7 +5,7 @@
 #include <hal/hal.h>
 #include <SPI.h>
 
-#define DHTPIN 6
+#define DHTPIN 5
 #define DHTTYPE DHT11
 DHT_Unified dht(DHTPIN, DHTTYPE);
 //Soil Moisture
@@ -20,7 +20,7 @@ void os_getArtEui(u1_t* buf) {
 }
 
 // This should also be in little endian format, see above.
-static const u1_t PROGMEM DEVEUI[8] = { 0x70, 0x1F, 0x06, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 };
+static const u1_t PROGMEM DEVEUI[8] = { 0xDC, 0x28, 0x06, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 };
 void os_getDevEui(u1_t* buf) {
   memcpy_P(buf, DEVEUI, 8);
 }
@@ -28,7 +28,7 @@ void os_getDevEui(u1_t* buf) {
 // This key should be in big endian format (or, since it is not really a
 // number but a block of memory, endinness does not really apply). In
 // practice, a key taken from ttnctl can be copied as-is.
-static const u1_t PROGMEM APPKEY[16] = { 0xF3, 0xB6, 0x15, 0xBE, 0x10, 0x19, 0xE9, 0x84, 0xE0, 0x16, 0x0F, 0xBB, 0xDB, 0xBD, 0x88, 0x4D };
+static const u1_t PROGMEM APPKEY[16] = { 0xAF, 0x0F, 0x06, 0x32, 0xB3, 0x71, 0x7D, 0x08, 0x0E, 0xB8, 0x88, 0x9D, 0xEE, 0xC7, 0x2C, 0x98 };
 void os_getDevKey(u1_t* buf) {
   memcpy_P(buf, APPKEY, 16);
 }
@@ -167,7 +167,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println(F("Starting"));
   dht.begin();
-  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
 
   // LMIC init
   os_init();
