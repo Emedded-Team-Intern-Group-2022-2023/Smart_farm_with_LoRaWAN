@@ -1,0 +1,217 @@
+[
+    {
+        "id": "998d7417d838c2ee",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cf0b6aeddc4264d1",
+        "type": "mqtt in",
+        "z": "998d7417d838c2ee",
+        "name": "",
+        "topic": "#",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e7297c63eeae2a71",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "aafffdf126e2d9a0"
+            ]
+        ]
+    },
+    {
+        "id": "aafffdf126e2d9a0",
+        "type": "debug",
+        "z": "998d7417d838c2ee",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9886065365501195",
+        "type": "mqtt out",
+        "z": "998d7417d838c2ee",
+        "name": "",
+        "topic": "v3/soilmoisture-dht@ttn/devices/dhtsensor/down/push",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e7297c63eeae2a71",
+        "x": 520,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "a3e96d32022d0def",
+        "type": "inject",
+        "z": "998d7417d838c2ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{   \"downlinks\": [{     \"f_port\": 1,     \"frm_payload\": \"AQ==\",     \"priority\": \"HIGH\"   }] }",
+        "payloadType": "json",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "9886065365501195",
+                "8f159e8293e0ad9f"
+            ]
+        ]
+    },
+    {
+        "id": "50fcfe1370c9a28d",
+        "type": "inject",
+        "z": "998d7417d838c2ee",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{   \"downlinks\": [{     \"f_port\": 1,     \"frm_payload\": \"AA==\",     \"priority\": \"HIGH\"   }] }",
+        "payloadType": "json",
+        "x": 150,
+        "y": 320,
+        "wires": [
+            [
+                "9886065365501195",
+                "9cf9ef9553b548ee"
+            ]
+        ]
+    },
+    {
+        "id": "9cf9ef9553b548ee",
+        "type": "debug",
+        "z": "998d7417d838c2ee",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8f159e8293e0ad9f",
+        "type": "debug",
+        "z": "998d7417d838c2ee",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1ef778accfb6ab9a",
+        "type": "mqtt in",
+        "z": "998d7417d838c2ee",
+        "name": "",
+        "topic": "v3/soilmoisture-dht@ttn/devices/dhtsensor/down/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e7297c63eeae2a71",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 40,
+        "wires": [
+            [
+                "d05c4038aac8cf49"
+            ]
+        ]
+    },
+    {
+        "id": "d05c4038aac8cf49",
+        "type": "debug",
+        "z": "998d7417d838c2ee",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e7297c63eeae2a71",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "eu1.cloud.thethings.network:1883",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
